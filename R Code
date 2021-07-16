@@ -1,0 +1,13 @@
+library("readxl")
+iimb.data <- read_excel("IIMB Project Dataset.xlsx")
+View(iimb.data)
+
+iimb.regress <- lm(car ~ beta + market_cap + insider_cat, data = iimb.data)
+summary(iimb.data)
+
+plot(iimb.regress$fitted.values, iimb.regress$residuals)
+
+hist(iimb.regress$residuals, breaks = 12)
+qqnorm(iimb.regress$residuals)
+qqline(iimb.regress$residuals)
+
